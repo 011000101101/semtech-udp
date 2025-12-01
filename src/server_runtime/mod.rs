@@ -127,7 +127,7 @@ pub struct Downlink {
 impl Downlink {
     pub fn set_packet(&mut self, txpk: TxPk) {
         self.packet = Some(pull_resp::Packet {
-            random_token: rand::thread_rng().gen(),
+            random_token: rand::rng().random(),
             data: pull_resp::Data::from_txpk(txpk),
         });
     }
@@ -181,7 +181,7 @@ impl ClientTx {
 
     pub fn prepare_downlink(&mut self, txpk: Option<TxPk>, mac: MacAddress) -> Downlink {
         let packet = txpk.map(|txpk| pull_resp::Packet {
-            random_token: rand::thread_rng().gen(),
+            random_token: rand::rng().random(),
             data: pull_resp::Data::from_txpk(txpk),
         });
 
