@@ -10,14 +10,23 @@ Bytes  | Function
 3      | PULL_RESP identifier 0x03
 4-end  | JSON object, starting with {, ending with }, see section 6
  */
-use super::{
-    tx_ack, types, write_preamble, Error as PktError, Identifier, MacAddress, SerializablePacket,
-    Tmst,
-};
+use super::tx_ack;
+use super::types;
+use super::write_preamble;
+use super::Error as PktError;
+use super::Identifier;
+use super::MacAddress;
+use super::SerializablePacket;
+use super::Tmst;
 
-use serde::{Deserialize, Serialize};
-use std::io::{Cursor, Write};
-use types::{deserialize_codr, serialize_codr, DataRate, Modulation};
+use serde::Deserialize;
+use serde::Serialize;
+use std::io::Cursor;
+use std::io::Write;
+use types::deserialize_codr;
+use types::serialize_codr;
+use types::DataRate;
+use types::Modulation;
 
 #[derive(Debug, Clone)]
 pub struct Packet {
@@ -107,6 +116,12 @@ pub struct TxPk {
     pub fdev: Option<u64>, //FSK frequency deviation (unsigned integer, in Hz)
     pub ipol: bool,       // Lora modulation polarization inversion
     pub prea: Option<u64>, // RF preamble size (unsigned integer)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sync: Option<u8>, // non-LoRaWAN sync word
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub synl: Option<u8>, // non-LoRaWAN sync word
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ldro: Option<bool>, // non-LoRaWAN sync word
     #[serde(flatten)]
     pub data: PhyData,
     #[serde(skip_serializing_if = "Option::is_none")]
