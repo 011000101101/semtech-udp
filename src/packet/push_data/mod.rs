@@ -15,13 +15,21 @@ Bytes  | Function
 mod rxpk;
 pub use rxpk::*;
 
-use super::{
-    push_ack, types, write_preamble, Error as PktError, Identifier, MacAddress, SerializablePacket,
-};
-use serde::{Deserialize, Serialize};
-use serde_repr::{Deserialize_repr, Serialize_repr};
-use std::io::{Cursor, Write};
-use types::{DataRate, Modulation};
+use super::push_ack;
+use super::types;
+use super::write_preamble;
+use super::Error as PktError;
+use super::Identifier;
+use super::MacAddress;
+use super::SerializablePacket;
+use serde::Deserialize;
+use serde::Serialize;
+use serde_repr::Deserialize_repr;
+use serde_repr::Serialize_repr;
+use std::io::Cursor;
+use std::io::Write;
+use types::DataRate;
+use types::Modulation;
 
 #[derive(Debug, Clone)]
 pub struct Packet {

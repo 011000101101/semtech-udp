@@ -1,14 +1,19 @@
 #![allow(clippy::upper_case_acronyms)]
 use num_enum::TryFromPrimitive;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
+use serde::Serialize;
 use std::fmt;
 
 mod types;
-pub use lora_modulation::{Bandwidth, CodingRate, SpreadingFactor};
-pub use types::{DataRate, Modulation};
+pub use lora_modulation::Bandwidth;
+pub use lora_modulation::CodingRate;
+pub use lora_modulation::SpreadingFactor;
+pub use types::DataRate;
+pub use types::Modulation;
 
 mod error;
-pub use error::{Error, ParseError};
+pub use error::Error;
+pub use error::ParseError;
 pub type Result<T = ()> = std::result::Result<T, Error>;
 
 pub use macaddr::MacAddr8 as MacAddress;
@@ -88,7 +93,8 @@ pub enum Down {
     PullResp(Box<pull_resp::Packet>),
 }
 
-use std::io::{Cursor, Write};
+use std::io::Cursor;
+use std::io::Write;
 
 fn write_preamble(w: &mut Cursor<&mut [u8]>, token: u16) -> Result {
     Ok(w.write_all(&[PROTOCOL_VERSION, (token >> 8) as u8, token as u8])?)

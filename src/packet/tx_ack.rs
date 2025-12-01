@@ -16,9 +16,15 @@ Bytes  | Function
 12-end | [optional] JSON object, starting with {, ending with }, see section 6
 
 */
-use super::{write_preamble, Error as PktError, Identifier, MacAddress, SerializablePacket};
-use serde::{Deserialize, Serialize};
-use std::io::{Cursor, Write};
+use super::write_preamble;
+use super::Error as PktError;
+use super::Identifier;
+use super::MacAddress;
+use super::SerializablePacket;
+use serde::Deserialize;
+use serde::Serialize;
+use std::io::Cursor;
+use std::io::Write;
 
 #[derive(Debug, Clone)]
 pub struct Packet {

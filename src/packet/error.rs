@@ -1,4 +1,5 @@
-use crate::{Down, Up};
+use crate::Down;
+use crate::Up;
 use thiserror::Error;
 
 #[derive(Error, Debug)]

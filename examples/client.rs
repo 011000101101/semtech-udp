@@ -1,4 +1,5 @@
-use semtech_udp::client_runtime::{Event, UdpRuntime};
+use semtech_udp::client_runtime::Event;
+use semtech_udp::client_runtime::UdpRuntime;
 use semtech_udp::MacAddress;
 use std::net::SocketAddr;
 use std::str::FromStr;

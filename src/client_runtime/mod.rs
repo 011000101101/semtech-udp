@@ -3,14 +3,21 @@
    run sending and receiving concurrently as tasks,
    receive downlink packets and send uplink packets easily
 */
-use crate::{
-    pull_data, pull_resp, push_data, Down, MacAddress, Packet, ParseError, SerializablePacket, Up,
-};
+use crate::pull_data;
+use crate::pull_resp;
+use crate::push_data;
+use crate::Down;
+use crate::MacAddress;
+use crate::Packet;
+use crate::ParseError;
+use crate::SerializablePacket;
+use crate::Up;
 use std::sync::Arc;
-use tokio::{
-    net::{ToSocketAddrs, UdpSocket},
-    sync::mpsc::{self, Receiver, Sender},
-};
+use tokio::net::ToSocketAddrs;
+use tokio::net::UdpSocket;
+use tokio::sync::mpsc::Receiver;
+use tokio::sync::mpsc::Sender;
+use tokio::sync::mpsc::{self};
 
 mod error;
 pub use error::Error;

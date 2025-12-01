@@ -1,7 +1,10 @@
-use crate::packet::types::{deserialize_codr, serialize_codr};
+use crate::packet::types::deserialize_codr;
+use crate::packet::types::serialize_codr;
 use crate::push_data::CRC;
-use crate::{DataRate, Modulation};
-use serde::{Deserialize, Serialize};
+use crate::DataRate;
+use crate::Modulation;
+use serde::Deserialize;
+use serde::Serialize;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(untagged)]

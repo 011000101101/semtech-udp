@@ -13,8 +13,12 @@ PUSH_DATA packets received.
 
  */
 use super::super::simple_down_packet;
-use super::{write_preamble, Error as PktError, Identifier, SerializablePacket};
-use std::io::{Cursor, Write};
+use super::write_preamble;
+use super::Error as PktError;
+use super::Identifier;
+use super::SerializablePacket;
+use std::io::Cursor;
+use std::io::Write;
 
 #[derive(Debug, Clone)]
 pub struct Packet {

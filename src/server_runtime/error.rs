@@ -1,6 +1,9 @@
-use super::{Event, InternalEvent, SystemTime};
+use super::Event;
+use super::InternalEvent;
+use super::SystemTime;
 use thiserror::Error;
-use tokio::sync::{mpsc, oneshot};
+use tokio::sync::mpsc;
+use tokio::sync::oneshot;
 
 #[derive(Error, Debug)]
 pub enum Error {

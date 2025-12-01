@@ -1,9 +1,14 @@
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
+use serde::Serialize;
 
 pub use data_rate::*;
 
 pub mod data_rate {
-    use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
+    use serde::de;
+    use serde::Deserialize;
+    use serde::Deserializer;
+    use serde::Serialize;
+    use serde::Serializer;
     use std::cmp::PartialEq;
     use std::fmt::Display;
     use std::str::FromStr;
@@ -236,7 +241,8 @@ pub mod data_rate {
     mod tests {
         // Note this useful idiom: importing names from outer (for mod tests) scope.
         use super::*;
-        use lora_modulation::{Bandwidth, SpreadingFactor};
+        use lora_modulation::Bandwidth;
+        use lora_modulation::SpreadingFactor;
         #[test]
         fn test_to_string_sf7() {
             let datarate = DataRate(SpreadingFactor::_7, Bandwidth::_500KHz);
@@ -326,7 +332,10 @@ pub enum Modulation {
 pub(crate) mod base64 {
     extern crate base64;
     use crate::packet::types::base64::base64::Engine;
-    use serde::{de, Deserialize, Deserializer, Serializer};
+    use serde::de;
+    use serde::Deserialize;
+    use serde::Deserializer;
+    use serde::Serializer;
 
     pub fn serialize<S>(bytes: &[u8], serializer: S) -> Result<S::Ok, S::Error>
     where

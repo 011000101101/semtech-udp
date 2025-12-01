@@ -1,6 +1,7 @@
 use super::*;
 use crate::tx_ack::Data;
-use std::{convert::TryFrom, result::Result};
+use std::convert::TryFrom;
+use std::result::Result;
 
 const PROTOCOL_VERSION_INDEX: usize = 0;
 const IDENTIFIER_INDEX: usize = 3;
