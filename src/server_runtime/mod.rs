@@ -115,7 +115,7 @@ pub struct UdpRuntime {
     rx: ClientRx,
     tx: ClientTx,
 }
-use rand::Rng;
+use rand::prelude::*;
 
 #[derive(Clone)]
 pub struct Downlink {
